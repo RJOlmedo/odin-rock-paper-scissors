@@ -40,12 +40,13 @@ Test what your function returns by using console.log.
 function getHumanChoice(){
     // Print in console a message that says "Type one of the following: rock paper scissors"
     // Get answer from the user and store in choice variable
-    let choice = promt("Type one of the following: rock paper scissors");
+    let choice = prompt("Type one of the following: rock paper scissors");
     // Set variable to lower case and without blank spaces
     choice = choice.toLowerCase().replace(/\s/g, "");
+    console.log(choice);
 
     // If the answer is not of the desired choices
-    if(choice != "rock" || choice != "paper" || choice != "scissors"){
+    if(choice != "rock" && choice != "paper" && choice != "scissors"){
         // Print "Not a valid option"
         console.log("Not a valid Option");
     }
@@ -74,8 +75,8 @@ Write the code for your playRound function to console.log a string value represe
 Increment the humanScore or computerScore variable based on the round winner.
 */
 
-// Initialiaze function called playGround with parameters humanChoice and computerChoice
-function playGround(humanChoice, computerChoice){
+// Initialiaze function called playRound with parameters humanChoice and computerChoice
+function playRound(humanChoice, computerChoice){
     // If human loses 
     // Computer chooses paper user rock
     // Or computer chooses scissors user paper
@@ -87,10 +88,47 @@ function playGround(humanChoice, computerChoice){
         computerScore++;
     }
     // Else
-    else{
+    else if(( humanChoice === "paper" && computerChoice === "rock") || ( humanChoice === "scissors" && computerChoice === "paper")  || ( humanChoice === "rock" && computerChoice === "scissors") ){
         // Print `You win! ${humanChoice} beats ${computerChoice}`
         console.log(`You win! ${humanChoice} beats ${computerChoice}`);
         // Increment humanScore
         humanScore++;
     }
 }
+
+/*
+Create a new function named playGame.
+Move your playRound function and score variables so that they’re declared inside of the new playGame function
+Play 5 rounds by calling playRound 5 times.
+Hint: When you assign a function call to a variable, the return value of that function is assigned to the variable. Accessing the variable afterward will only provide the assigned value; it doesn’t recall the function. You need to recall the choice functions to get new choices for each round.
+Re-work your previous functions or create more helper functions if necessary. Specifically, you may want to change the return values to something more useful.
+If you already know about loops, you can use them. If not, don’t worry! Loops will be covered in the next lesson.
+*/
+
+// Initialize function called playGame
+function playGame(){
+    // For 5 times
+    for(i=0; i<5; i++){ 
+        // Call playRound Function
+        playRound();
+    // End For
+    }
+
+    // If winner is computer
+    if(computerScore > humanScore){
+        // Print `You Lose! Computer Score: ${computerScore}, Human Score: ${humanScore}`
+        console.log(`You Lose! Computer Score: ${computerScore}, Human Score: ${humanScore}`);
+    // End If
+    }
+    // Else
+    else{
+        // Print `You Win! Computer Score: ${computerScore}, Human Score: ${humanScore}`
+        console.log(`You Win! Computer Score: ${computerScore}, Human Score: ${humanScore}`);
+    // End Else
+    }
+}
+
+let humanChoice = getHumanChoice();
+let computerChoice = getComputerChoice(); 
+
+playRound(humanChoice, computerChoice);
