@@ -55,3 +55,42 @@ function getHumanChoice(){
         return choice;
     }
 }
+
+/*
+Create two new variables named humanScore and computerScore in the global scope.
+Initialize those variables with the value of 0.
+*/
+
+// Initialiaze variable humanScore
+let humanScore = 0;
+// Initialiaze variable computerScore
+let computerScore = 0;
+
+/*
+Create a new function named playRound.
+Define two parameters for playRound: humanChoice and computerChoice. Use these two parameters to take the human and computer choices as arguments.
+Make your function’s humanChoice parameter case-insensitive so that players can input “rock”, “ROCK”, “RocK”, or other variations.
+Write the code for your playRound function to console.log a string value representing the round winner, such as: “You lose! Paper beats Rock”.
+Increment the humanScore or computerScore variable based on the round winner.
+*/
+
+// Initialiaze function called playGround with parameters humanChoice and computerChoice
+function playGround(humanChoice, computerChoice){
+    // If human loses 
+    // Computer chooses paper user rock
+    // Or computer chooses scissors user paper
+    // Or computer chooses rock user scissors
+    if((computerChoice === "paper" && humanChoice === "rock") || (computerChoice === "scissors" && humanChoice === "paper") || (computerChoice === "rock" && humanChoice === "scissors")){
+        // Print `You lose! ${computerChoice} beats ${humanChoice}`
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        // Increment computerScore
+        computerScore++;
+    }
+    // Else
+    else{
+        // Print `You win! ${humanChoice} beats ${computerChoice}`
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        // Increment humanScore
+        humanScore++;
+    }
+}
