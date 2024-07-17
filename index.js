@@ -29,4 +29,29 @@ function getComputerChoice(){
     return choice;
 }
 
-console.log(getComputerChoice());
+/*
+Create a new function named getHumanChoice.
+Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs.
+Hint: Use the prompt method to get the user’s input.
+Test what your function returns by using console.log.
+*/
+
+// Initialiaze function called getHumanChoice
+function getHumanChoice(){
+    // Print in console a message that says "Type one of the following: rock paper scissors"
+    // Get answer from the user and store in choice variable
+    let choice = promt("Type one of the following: rock paper scissors");
+    // Set variable to lower case and without blank spaces
+    choice = choice.toLowerCase().replace(/\s/g, "");
+
+    // If the answer is not of the desired choices
+    if(choice != "rock" || choice != "paper" || choice != "scissors"){
+        // Print "Not a valid option"
+        console.log("Not a valid Option");
+    }
+    // Else
+    else{
+        // Return choice
+        return choice;
+    }
+}
