@@ -107,10 +107,30 @@ If you already know about loops, you can use them. If not, don’t worry! Loops 
 
 // Initialize function called playGame
 function playGame(){
+    // Initialize counter
+    i = 0;
     // For 5 times
-    for(i=0; i<5; i++){ 
+    while(i < 5){
+        // Initialiaze humanChoice
+        let humanChoice = getHumanChoice();
+        // Initialiaze computer choice
+        let computerChoice = getComputerChoice();
+        
+        // If their the choices are the same substract one from the counter so it executes another time
+        if(humanChoice === computerChoice){
+            // Print `It\'s a tie! One round will be added`
+            alert(`It\'s a tie! One round will be added`) 
+
+            // substract one from the counter so it executes another time
+            i--;
+        }
+        
+
         // Call playRound Function
-        playRound();
+        playRound(humanChoice, computerChoice);
+
+        // Add Counter
+        i++;
     // End For
     }
 
@@ -121,14 +141,12 @@ function playGame(){
     // End If
     }
     // Else
-    else{
+    else if(humanScore > computerScore){
         // Print `You Win! Computer Score: ${computerScore}, Human Score: ${humanScore}`
         console.log(`You Win! Computer Score: ${computerScore}, Human Score: ${humanScore}`);
     // End Else
     }
 }
 
-let humanChoice = getHumanChoice();
-let computerChoice = getComputerChoice(); 
 
-playRound(humanChoice, computerChoice);
+playGame();
